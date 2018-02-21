@@ -1,0 +1,34 @@
+#Calculating a 20% tip
+
+  DEF TIP_CALCULATOR(total)
+    SET tip to (total / by 10) * 2
+    RETURN tip + total bill
+  END DEF
+
+#Determining what to wear
+
+  DEF WHAT_TO_WEAR(weather)
+    IF weather == warm
+      RETURN "shorts and short-sleeved shirt"
+    ELSIF weather == cold
+      RETURN "jeans and a sweater"
+    ELSE
+      RETURN "It's a trap!"
+    END IF-ELSE
+  END DEF
+
+#Getting to work
+
+  DEF GO_TO_WORK(route_1_traffic, route_2_traffic)
+    route_1_regular = 30
+    route_2_regular = 15
+
+    SET route_one to route_1_regular + route_1_traffic
+    SET route_two to route_two_regular + route_2_traffic
+
+    IF route_one > route_two
+      RETURN route_two
+    ELSE
+      RETURN route_one
+    END IF-ELSE
+  END DEF
