@@ -45,3 +45,27 @@ Calculate fib(10), fib(11), fib(12) by hand.
   fib(10) = 55 #=> 34 + 21
   fib(11) = 89 #=> 55 + 34
   fib(12) = 144 #=> 89 + 55
+
+Given an unsorted collection of a million items,
+which algorithm would you choose between linear search and binary search?
+Would you use an iterative or recursive solution? Explain your reasoning.
+
+  Given an unsorted collection of a million items,
+  we have to use linear search over binary search because binary search requires
+  a sorted collection of items.
+  I would use iterative over recursive because my recursive search requires a sorted
+  collection of items.
+
+
+Given a sorted collection of a million items,
+which algorithm would you choose between linear search and binary search?
+Would you use an iterative or recursive solution? Explain your reasoning.
+
+  Given a sorted collection of a million items,
+  we use binary search over linear because binary's "divide and conquer" algorithm
+  finds the answer faster in the vast majority of cases.
+  In test case of a collection array of numbers 1 to 1,000,000
+  binary_search_iterative(collection, 245000) benchmarked 1.8...
+  and
+  binary_search_recursive(collection, 245000) benchmarked 2.3...
+  so I would use iterative.
