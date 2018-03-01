@@ -1,14 +1,48 @@
-def quick_sort(array)
-  return nil if array.empty?
+def quick_sort(array, from=0, to=nil)
+    if to == nil
+        # Sort the whole array, by default
+        to = array.count - 1
+    end
 
-  #[34, 2, 1, 5, 3]
-  # pivot = 1
-  #[34, 2, 5, 3]
-  # left = [34, 2]
-  # right = [5, 3]
-  pivot = array.delete_at(rand(array.size))
-  left, right = array.partition(&pivot.method(:>))
+    if from >= to
+        # Done sorting
+        return
+    end
 
-  result = quick_sort(left), pivot, quick_sort(right)
-  return result.flatten.compact
+    # Take a pivot value, at the far left
+    pivot = array[from]
+
+    # Min and Max pointers
+    min = from
+    max = to
+
+    # Current free slot
+    free = min
+
+    while min < max
+        if free == min # Evaluate array[max]
+            if array[max] <= pivot # Smaller than pivot, must move
+                array[free] = array[max]
+                min += 1
+                free = max
+            else
+                max -= 1
+            end
+        elsif free == max # Evaluate array[min]
+            if array[min] >= pivot # Bigger than pivot, must move
+                array[free] = array[min]
+                max -= 1
+                free = min
+            else
+                min += 1
+            end
+        else
+            raise "Inconsistent state"
+        end
+    end
+
+    array[free] = pivot
+
+    quick_sort(array, from, free - 1)
+    quick_sort(array, free + 1, to)
 end

@@ -21,6 +21,6 @@ Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
   x.report("heap_sort")  { heap_sort(array) do ; a = "1"; end }
   x.report("insertion_sort")  { insertion_sort(array) do ; a = "1"; end }
   x.report("merge_sort")  { merge_sort(array) do ; a = "1"; end }
-  x.report("quick_sort")  { quick_sort(array) do ; a = "1"; end }
+  x.report("quick_sort")  { quick_sort(array, 0, array.length-1) do ; a = "1"; end }
   x.report("selection_sort")  { selection_sort(array) do ; a = "1"; end }
 end

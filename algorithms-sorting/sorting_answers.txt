@@ -5,37 +5,30 @@ Use your output to create a bar chart.
 
   ```
   2.4.0 :001 > load './algorithms-sorting/sorting_chart_benchmark.rb'
-  "array: [4, 46, 2, 6, 1, 34, 12, 27, 14, 8,
-          25, 47, 16, 49, 30, 7, 29, 11, 43, 13,
-          36, 15, 39, 9, 45, 28, 3, 23, 31, 32,
-          10, 26, 20, 40, 37, 33, 24, 38, 50, 19,
-          5, 44, 42, 22, 41, 18, 21, 17, 48, 35]"
-              real
-  bubble_sort  (  0.000468)
-  bucket_sort  (  0.000182)
-  heap_sort  (  0.000362)
-  insertion_sort  (  0.000216)
-  merge_sort  (  0.000302)
-  quick_sort  (  0.000515)
-  selection_sort  (  0.000314)
+  "array: [38, 15, 16, 25, 19, 21, 26, 27, 47, 36, 18, 39, 37, 4, 6, 2, 41, 20, 31, 24, 30, 34, 13, 35, 29, 23, 3, 10, 43, 49, 5, 46, 33, 40, 45, 32, 44, 22, 1, 14, 42, 8, 28, 48, 17, 12, 11, 50, 9, 7]"
+                user     system      total        real
+  bubble_sort  0.000000   0.000000   0.000000 (  0.000550)
+  bucket_sort  0.000000   0.000000   0.000000 (  0.000183)
+  heap_sort  0.000000   0.000000   0.000000 (  0.000408)
+  insertion_sort  0.000000   0.000000   0.000000 (  0.000240)
+  merge_sort  0.000000   0.000000   0.000000 (  0.000336)
+  quick_sort  0.000000   0.000000   0.000000 (  0.000249)
+  selection_sort  0.000000   0.000000   0.000000 (  0.000333)
   ```
 
 Looking at the bar chart, speculate on why you think some sort algorithms
 are faster than others and provide rationale as to your thought process.
 
   Let me rank these from fastest to slowest:
-  1. bucket_sort
-  2. insertion_sort
-  3. merge_sort
-  4. selection_sort
-  5. heap_sort
-  6. bubble_sort
-  7. quick_sort
+  1. bucket_sort (183)
+  2. insertion_sort (240)
+  3. quick_sort (249)
+  4. selection_sort (333)
+  5. merge_sort (336)
+  6. heap_sort (408)
+  7. bubble_sort (550)
 
-  If quick_sort is supposed to be one of the most efficient known sorting algorithms,
-  I'm surprised that it is the slowest running these tests, perhaps due to it's recursive
-  calls it is best used sorting larger collections.
   Bucket_sort dividing values into buckets then sorting the buckets was the fastest
   organizing these 50 values.
-  Merge_sort placed 3rd fastest which is more in line with this checkpoint's praise of it's
-  efficiency.
+  Quick_sort placed 3rd fastest confirming from the checkpoint that
+  "Quick sort has good performance compared to other sorting algorithms."
