@@ -1,0 +1,91 @@
+Describe an analogy for relating an algorithm that has efficiency O(1)
+and another algorithm that has O(2n).
+
+  An algorithm that has O(1) is a Cheetah and an algorithm that has O(2^n) is a Snail.
+  If both need to travel a mile to reach their food, the cheetah will reach the
+  destination much faster than the snail.
+  The same is true for each algorithm.
+  An algorithm that has 0(1) (Big-O of constant time) will complete in significantly less
+  time than will an algorithm that has O(2^n) (Big-O of exponential time).
+
+In plain English, what is the best case scenario for binary search?
+
+  The best case scenario for binary search is if the collection being searched through
+  has only one item, such that the algorithm has 0(1).
+  If the collection only has one item,
+  then in the binary search high, low, and mid are all equal at which point
+  the method returns "not found"/nil or the item at the sole index.
+
+In plain English, what is the worst-case scenario for binary search?
+
+  The worst case scenario for binary search is if the input collection approaches an infinite size.
+  in this case, the collection will have to be cut in half more times but that's
+  not so bad because on first iteration you're still throwing away half of an infinite
+  collection of items. Because of this, binary search in it's worst case has O(log n).
+
+In plain English, what is the bounded-case scenario for binary search?
+
+  The bounded-case for binary search is O(log n) because as collection increases,
+  the number of times the collection needs to be cut in half to find the result grows
+  slower and slower.
+
+Create a graph using the data below. Here's a CSV with the values you'll need.
+
+  0 - 1
+  1 - 2
+  2 - 4
+  3 - 8
+  4 - 16
+  5 - 32
+  6 - 64
+  7 - 128
+  8 - 256
+  9 - 512
+  10 - 1024
+
+What is the limit of the function above as n approaches infinity?
+
+  As n approaches infinity f(n) limit is infinity.
+
+What is the Big-O of an algorithm that has the data points above?
+
+  The Big-O of an algorithm that has the data points above is O(2^n)
+  or Big-O of exponential time.
+
+Write a Ruby method that takes a number n.
+This method must print the worst-case number of iterations for linear search
+to find an item in collections of size one to n.
+Use it to generate a table of worst-case iterations of collections up to size 10.
+
+```
+  2.4.0 :001 > load './complexity-introduction/function.rb'
+  1 - 1
+  2 - 2
+  3 - 3
+  4 - 4
+  5 - 5
+  6 - 6
+  7 - 7
+  8 - 8
+  9 - 9
+  10 - 10
+```
+
+Create a graph from the output using Google Sheets or other graphing software.
+Analyze the graph and denote its Big-O somewhere on the graph.
+
+  https://docs.google.com/spreadsheets/d/1tOdilsBhH5LCWhLolCYrxQscMvvix-nICHe1XbnlCmo/edit?usp=sharing
+
+What is the Big-O of binary search?
+
+  O(log n). Worst case of binary search is log n
+
+What is the Big-Ω of binary search?
+
+ Ω(1). Best case for binary search is constant
+
+What is the Big-Ө of binary search?
+
+ Ө(logn). Average case for binary search is log n.
+
+end
