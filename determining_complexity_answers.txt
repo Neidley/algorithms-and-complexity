@@ -1,0 +1,180 @@
+1. What's the Big-O of the following algorithm?
+Submit your work and reasoning with your solution.
+goodbye_world.rb
+def goodbye_world(n)
+ puts "Goodbye World! #{n}"
+end
+
+  ANSWER HERE
+  This algorithm has O(1) or it constant time. No matter what you input into the method
+  as n the algorithm takes the same time to output the solution, because it's just
+  putting "Goodbye World!" and appending n input to the end of the string.
+
+2. What's the Big-O of the following algorithm?
+Submit your work and reasoning with your solution.
+find_largest.rb
+def find_largest(collection)
+  largest = collection[0]
+  collection.length.times do |i|
+    if collection[i] >= largest
+      largest = collection[i]
+    end
+  end
+  largest
+end
+
+  ANSWER HERE
+  This algorithm takes a collection and iterates over it to return the largest item
+  in the collection. It always has to iterate over the entire collection before it
+  knows it has found the largest to return. The larger the collection input, the more
+  iterations have to occur. Therefore this algorithm has O(n) or linear time.
+
+3. What's the Big-O of the following algorithm?
+Submit your work and reasoning with your solution.
+find_largest_2D_array.rb
+def find_largest(collection)
+ largest = collection[0][0]
+ collection.length.times do |i|
+   subcollection = collection[i]
+   subcollection.length.times do |i|
+     if subcollection[i] >= largest
+       largest = subcollection[i]
+     end
+   end
+ end
+ largest
+end
+
+  ANSWER HERE
+  This algorithm has two iterative loops one within the other and
+  returns the largest item within the subcollection of the collection.
+  Here's some visual representations of potential input 2D array collections:
+  n = items, operations = operations
+  [[1, 2]]
+  n = 2, operations = 3
+  [[1, 2], [3, 4]]
+  n = 4, operations = 6
+  [[1, 2], [3, 4], [5, 6]]
+  n = 6, operations = 9
+  [[1, 2], [3, 4], [5, 6], [7, 8]]
+  n = 8, operations = 12
+  [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+  n = 10, operations = 15
+  The larger the collection input, the more
+  operations/iterations have to occur. For every 2 more n, there are 3 more operations.
+  Therefore this algorithm has O(n) or linear time.
+
+
+4. What's the Big-O of the following algorithm?
+Submit your work and reasoning with your solution.
+numbers_recurive.rb
+def numbers(n)
+ if (n == 0)
+   return 0
+ elsif (n == 1)
+   return 1
+ else
+   return numbers(n-1) + numbers(n-2)
+ end
+end
+
+  ANSWER HERE
+  I've charted the input and number of operations in this spreadsheet and charted the data
+  points and by my analysis this appears to perform at 0(2^n) exponential time.
+  https://docs.google.com/spreadsheets/d/1JTuhjpdshi2LpZIu_RivAcErsgniEfIMK53PqbAAVZs/edit?usp=sharing
+  This stackoverflow also helped explain why it's exponential:
+  https://stackoverflow.com/questions/34698842/why-is-the-fibonacci-sequence-big-o2n-instead-of-ologn/34699174
+
+5. What's the Big-O of the following algorithm?
+Submit your work and reasoning with your solution.
+numbers_iterative.rb
+def iterative(n)
+  num1 = 0
+  num2 = 1
+
+  i = 0
+  while i < n-1
+    tmp = num1 + num2
+    num1 = num2
+    num2 = tmp
+    i+=1
+  end
+
+  num2
+end
+
+  ANSWER HERE
+  This iterative fibonacci algorithm has O(n) or linear time.
+  The number of operations grows at the same rate as you increase the input.
+  (referenced top answer of this stackoverflow)
+  https://stackoverflow.com/questions/8532142/iterative-and-recursive-version-has-same-complexity
+
+6. What's the Big-O of the following algorithm?
+Submit your work and reasoning with your solution.
+sort.rb
+def sort(collection, from=0, to=nil)
+ if to == nil
+   # Sort the whole collection, by default
+   to = collection.count - 1
+ end
+
+ if from >= to
+   # Done sorting
+   return
+ end
+
+ # Take a pivot value, at the far left
+ pivot = collection[from]
+
+ # Min and Max pointers
+ min = from
+ max = to
+
+ # Current free slot
+ free = min
+
+ while min < max
+   if free == min # Evaluate collection[max]
+     if collection[max] <= pivot # Smaller than pivot, must move
+       collection[free] = collection[max]
+       min += 1
+       free = max
+     else
+       max -= 1
+     end
+   elsif free == max # Evaluate collection[min]
+     if collection[min] >= pivot # Bigger than pivot, must move
+       collection[free] = collection[min]
+       max -= 1
+       free = min
+     else
+       min += 1
+     end
+   else
+     raise "Inconsistent state"
+   end
+ end
+
+ collection[free] = pivot
+
+ sort collection, from, free - 1
+ sort collection, free + 1, to
+
+ collection
+end
+
+  ANSWER HERE
+  This is Quick Sort! You can't fool me!
+  Quick Sort has O(n^2) or quadratic time.
+  from wikipedia(https://en.wikipedia.org/wiki/Quicksort#Worst-case_analysis)
+  "Worst-case analysis
+  The most unbalanced partition occurs when the pivot divides the list into two
+  sublists of sizes 0 and n − 1. This may occur if the pivot happens to be the
+  smallest or largest element in the list, or in some implementations
+  (e.g., the Lomuto partition scheme as described above) when all the elements are equal.
+  If this happens repeatedly in every partition, then each recursive call processes
+  a list of size one less than the previous list.
+  Consequently, we can make n − 1 nested calls before we reach a list of size 1.
+  This means that the call tree is a linear chain of n − 1 nested calls.
+  The ith call does O(n − i) work to do the partition, and ...
+  so in that case Quicksort takes O(n²) time."
