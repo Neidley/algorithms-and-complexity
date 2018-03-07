@@ -1,7 +1,7 @@
-Find the Big-O of each version and write your work and solution
+Instructions: Find the Big-O of each version and write your work and solution
 in a file named improving-complexity-big-o.rb.
 
-VERSION_ONE.RB
+improving_complexity_version_one.rb notes - optimize code
 
   Due to its use of insertion sort, improved_code has O(n^2) or Quadratic Time
   worst case scenario.
@@ -9,7 +9,7 @@ VERSION_ONE.RB
   into One-Dimensional array instead of using two loops.
 
 
-VERSION_TWO.RB
+improving_complexity_version_two.rb notes - improve time complexity performance
 
   Due to its use of merge sort, improved_time's worst case complexity is O(n log n) or
   Loglinear time.
@@ -23,7 +23,7 @@ VERSION_TWO.RB
   2.4.0 :006 >
   ```
 
-VERSION_THREE.RB
+improving_complexity_version_three.rb notes - improve space complexity
 
   After researching what sorting algorithms best sort in-place to conserve space,
   I implemented quick_sort within the improved_space method.
