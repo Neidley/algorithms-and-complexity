@@ -1,0 +1,44 @@
+Instructions: Find the Big-O of each version and write your work and solution
+in a file named improving-complexity-big-o.rb.
+
+improving_complexity_version_one.rb notes - optimize code
+
+  Due to its use of insertion sort, improved_code has O(n^2) or Quadratic Time
+  worst case scenario.
+  improved_code method uses the built-in ruby array method ".flatten" to turn 2D array
+  into One-Dimensional array instead of using two loops.
+
+
+improving_complexity_version_two.rb notes - improve time complexity performance
+
+  Due to its use of merge sort, improved_time's worst case complexity is O(n log n) or
+  Loglinear time.
+  improved_time method uses merge_sort instead of insertion sort to improve time.
+
+  ```
+  2.4.0 :004 > Benchmark.measure { poorly_written_ruby(array_of_arrays) }
+  => #<Benchmark::Tms:0x007ff9170191a0 @label="", @real=2.9999995604157448e-05, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+  2.4.0 :005 > Benchmark.measure { improved_time(array_of_arrays) }
+  => #<Benchmark::Tms:0x007ff918877170 @label="", @real=0.00010900001507252455, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+  2.4.0 :006 >
+  ```
+
+improving_complexity_version_three.rb notes - improve space complexity
+
+  After researching what sorting algorithms best sort in-place to conserve space,
+  I implemented quick_sort within the improved_space method.
+  Therefore improved_space's worst case complexity is O(log n) or
+  Logarithmic time.
+
+  from https://en.wikipedia.org/wiki/Quicksort#Space_complexity :
+
+  "The space used by quicksort depends on the version used.
+
+  The in-place version of quicksort has a space complexity of O(log n),
+  even in the worst case, when it is carefully implemented using the following strategies:
+
+  in-place partitioning is used. This unstable partition requires O(1) space.
+  After partitioning, the partition with the fewest elements is (recursively) sorted first,
+  requiring at most O(log n) space. Then the other partition is sorted using tail recursion
+  or iteration, which doesn't add to the call stack. This idea, as discussed above,
+  was described by R. Sedgewick, and keeps the stack depth bounded by O(log n)."
